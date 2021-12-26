@@ -7,7 +7,7 @@ import 'package:flutter_app_pilot/core/dio_client.dart';
 
 import './base_urls.dart';
 
-final goRestServiceProvider = Provider<RecipeService>((ref) {
+final recipeServiceProvider = Provider<IRecipeService>((ref) {
   final dioClient = CustomDioClient().create(
     baseUrl: BaseUrls.gorest_baseUrl,
   );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_pilot/notifiers/recipe_list_state.dart';
 import 'package:flutter_app_pilot/notifiers/recipe_notifier.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,13 +32,18 @@ class SearchInput extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final searchTextController = useTextEditingController();
+    final state = ref.watch(recipeListNotifierProvider);
     return SizedBox(
         height: 100,
         child: TextField(
           controller: searchTextController,
-          onSubmitted: (value) {
-            ref.watch(recipeListNotifierProvider.notifier).getRecipeData(value);
-          },
+          onSubmitted: !state.isLoading
+              ? (value) {
+                  ref
+                      .watch(recipeListNotifierProvider.notifier)
+                      .getRecipeData(value);
+                }
+              : null,
         ));
   }
 }
@@ -59,11 +65,15 @@ class Title extends StatelessWidget {
 
 class RecipeList extends HookConsumerWidget {
   const RecipeList({Key? key}) : super(key: key);
-
+  // useState
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final recipeList = ref.watch(recipeListNotifierProvider);
     return recipeList.when(
+        initial: () => const Text(
+              'Search something to show results',
+              textAlign: TextAlign.center,
+            ),
         loading: () => Container(
               color: Colors.white,
               child: const Center(child: CircularProgressIndicator()),
@@ -82,7 +92,7 @@ class RecipeList extends HookConsumerWidget {
                   ),
                 ],
               ])),
-        error: (err, stack) {
+        error: (err) {
           return Center(
             child: Text('$err.toString()'),
           );

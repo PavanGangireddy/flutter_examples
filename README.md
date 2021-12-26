@@ -15,7 +15,9 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-# Learning Track
+# Learning Path
+
+## Part 1
 
 - Widgets
   - Container
@@ -27,63 +29,110 @@ samples, guidance on mobile development, and a full API reference.
   - BoxConstraints
   - ListView
   - GestureDetector
-- Models
+  - TODO: More Widgets
 - Flutter hooks
-- Riverpod
-  - Scoped Providers - Overrides
-  - Apps
-    - Simple Counter
-    - Stopwatch timer
-    - TodosList
-    - Recipe Search
-    - NxtWatch like app with Auth
-    - Quiz App - https://www.youtube.com/watch?v=H2uEIRNM7TE
-    - MoviesAPI with pagination
-  - StateNotifier
-  - Provider
-- ## Clean Architecture Course
+  - TODO:
+- Riverpod Basics
 
-Resources:
+  - All Providers
+  - Scoped Providers - Overrides
+  - Provider
+  - StateNotifier
+
+### Apps Built
+
+- Simple Counter
+- Stopwatch timer
+- TodosList
+- Recipe Search
+
+### Resources:
 
 - CrashCourse Video
-- First two videos Boring show
+  - First two videos Boring show
 - Riverpod
   - https://medium.com/flutter-community/flutter-riverpod-tutorial-timer-app-186d04637775
   - https://suragch.medium.com/flutter-state-management-for-minimalists-4c71a2f2f0c1
   - https://www.youtube.com/watch?v=GdjFOVVG2Zs
   - https://resocoder.com/2020/11/27/flutter-riverpod-tutorial-the-better-provider/#t-1606296009781
-- Clean architecture course
-  - https://dev.to/marcossevilla/cleaner-flutter-vol-3-dominating-entities-bk4
-- Networking
-  - Dio - https://blog.logrocket.com/networking-flutter-using-dio/
-  - retrofit - https://medium.com/mindful-engineering/retrofit-the-easiest-way-to-call-rest-apis-is-flutter-fe55d1e7c5c2
 
-# Next
+## Part 2
 
-- Debugging
+- Simple Debugging in vscode
+  - Logging view
+  - Breakpoints
 - Networking
 
-  - API Call and Store integration flow
+  - API Call using dio and ui integration flow
+
     - networkcallwithapisauce - dio
-    - Retry mechanism - https://resocoder.com/2020/03/23/dio-connectivity-retry-interceptor-flutter-tutorial/
-    - configurations.dart
-    - AuthService
+    - All interceptors - Retry mechanism - https://resocoder.com/2020/03/23/dio-connectivity-retry-interceptor-flutter-tutorial/
+    - Services setup - RecipeService
+
+      - JSON, serialisation - equatable and freezed
+
     - provide custom headers using dio client
     - fixtures setup
 
-- JSON, serialisation - equatable and freezed
-- ProtectedRoute
 - Production level clean architecture
+
+  - Entities - equatable and freezed
+  - DTO - freezed - with and implements
+  - models
+  - repositories
+
+- Navigation - Routing structure
+
+  - ProtectedRoute
+  - Integration with logout route
+
+### Apps Built
+
+- NxtWatch like app with Auth
+- Quiz App - https://www.youtube.com/watch?v=H2uEIRNM7TE
+- MoviesAPI with pagination
+
+### Resources:
+
+- Clean architecture course
+
+  - https://dev.to/marcossevilla/cleaner-flutter-vol-3-dominating-entities-bk4
+  - https://devmuaz.medium.com/flutter-clean-architecture-series-part-1-d2d4c2e75c47
+  - https://medium.com/@mxiskw/flutter-pragmatic-architecture-using-riverpod-123ae11a8267
+
+## Part 3:
+
 - Flutter flavours
+
+  - Debugging environments
+
+- ErrorHandling - exceptions ?
+
 - Boilerplate prepare
-- Testing
-- ErrorHandling - exceptions
 - Custom hooks
 - Animations
 - FolderStructure
-  - core
+  - core contains what?
 - Platform specific code
 - Vscode Snippets - install
+
+- More UI Actions (UI <- Provider) - https://infinum.com/handbook/flutter/architecture/communication-between-ui-and-provider
+
+  - The view state should describe how the view tree should be built. Sometimes provider needs to communicate other things that don't fall under view tree of that widget. Most often these are:
+
+    - Navigation (open some screen, close current screen)
+    - Dialogs (show dialog, bottom sheet, hide dialog)
+    - Snackbars, Toasts, etc.
+
+- Testing
+  - Widget tests
+  - integration tests
+  - debugging tests
+- Retry interceptor
+- Other TODOS written inside app
+- Other TODOs left in the flow
+- More UI challenges
+  - https://github.com/marcossevilla/ui-challenges
 
 # Tweets
 

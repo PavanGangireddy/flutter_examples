@@ -6,11 +6,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Override FakeGoRestService', (tester) async {
+  testWidgets('Override FakeRecipeService', (tester) async {
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          goRestServiceProvider.overrideWithValue(FakeRecipeServiceImpl())
+          recipeServiceProvider.overrideWithValue(FakeRecipeServiceImpl())
         ],
         child: const MyApp(),
       ),

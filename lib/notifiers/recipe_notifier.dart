@@ -1,30 +1,32 @@
-import 'package:flutter_app_pilot/services/RecipeService/models.dart';
+import 'package:flutter_app_pilot/notifiers/recipe_list_state.dart';
+import 'package:flutter_app_pilot/services/RecipeService/repository.dart';
 import 'package:flutter_app_pilot/services/service_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final recipeListNotifierProvider =
-    StateNotifierProvider<RecipeListNotifier, AsyncValue<List<APIRecipe>>>(
-        (ref) {
-  return RecipeListNotifier(ref.read);
+    StateNotifierProvider<RecipeListNotifier, RecipeListState>((ref) {
+  return RecipeListNotifier(ref.watch(recipeServiceProvider));
 });
 
-class RecipeListNotifier extends StateNotifier<AsyncValue<List<APIRecipe>>> {
-  final Reader _read;
-  RecipeListNotifier(this._read) : super(const AsyncValue.loading()) {
-    getRecipeData('');
-  }
+//TODO: Change to recipeRepository after learning clean arch
+class RecipeListNotifier extends StateNotifier<RecipeListState> {
+  RecipeListNotifier(this._recipeService)
+      : super(const RecipeListState.initial());
+
+  final IRecipeService _recipeService;
+
   Future<void> getRecipeData(
     String query,
   ) async {
     try {
-      final recipeJson =
-          await _read(goRestServiceProvider).getRecipes(query, 5, 10);
+      final recipeJson = await _recipeService.getRecipes(query, 5, 10);
       final recipeList =
           recipeJson.hits.map(((recipe) => recipe.recipe)).toList();
-      state = AsyncValue.data(recipeList);
+      state = RecipeListState.data(recipeList);
     } catch (e) {
       print(e);
-      state = AsyncValue.error(e);
+      state = const RecipeListState.error('Error!');
+      // TODO: Handle Exceptions in a separate place
     }
   }
 }

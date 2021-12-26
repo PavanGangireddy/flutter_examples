@@ -1,5 +1,5 @@
 import 'models.dart';
 
-abstract class RecipeService {
+abstract class IRecipeService {
   Future<APIRecipeQuery> getRecipes(String query, int from, int to);
 }

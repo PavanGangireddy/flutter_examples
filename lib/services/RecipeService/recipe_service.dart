@@ -8,9 +8,10 @@ import './models.dart';
 part 'recipe_service.g.dart';
 
 @retrofit.RestApi()
-abstract class RecipeServiceImpl implements RecipeService {
+abstract class RecipeServiceImpl implements IRecipeService {
   factory RecipeServiceImpl(Dio dio) = _RecipeServiceImpl;
 
+  @override
   @retrofit.GET(Endpoints.recipeList)
   Future<APIRecipeQuery> getRecipes(@retrofit.Query('q') String query,
       @retrofit.Query('from') int from, @retrofit.Query('to') int to);
