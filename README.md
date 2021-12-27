@@ -74,12 +74,18 @@ samples, guidance on mobile development, and a full API reference.
     - provide custom headers using dio client
     - fixtures setup
 
+- ## More riverpod
+
+  -
+
 - Production level clean architecture
 
   - Entities - equatable and freezed
   - DTO - freezed - with and implements
   - models
   - repositories
+  - Handle Exceptions for any api call
+  - controller or notifier - decide a name
 
 - Navigation - Routing structure
 
@@ -88,6 +94,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Apps Built
 
+- Add to Cart Feature
 - NxtWatch like app with Auth
 - Quiz App - https://www.youtube.com/watch?v=H2uEIRNM7TE
 - MoviesAPI with pagination
@@ -133,6 +140,11 @@ samples, guidance on mobile development, and a full API reference.
 - Other TODOs left in the flow
 - More UI challenges
   - https://github.com/marcossevilla/ui-challenges
+
+### Apps Built
+
+- integrate with Firebase
+  - https://www.youtube.com/watch?v=vrPk6LB9bjo
 
 # Tweets
 

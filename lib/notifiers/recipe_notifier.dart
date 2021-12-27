@@ -27,6 +27,7 @@ class RecipeListNotifier extends StateNotifier<RecipeListState> {
       print(e);
       state = const RecipeListState.error('Error!');
       // TODO: Handle Exceptions in a separate place
+      // Ref: https://www.youtube.com/watch?v=vrPk6LB9bjo
     }
   }
 }
