@@ -9,3 +9,4 @@ obtaining the value of a provider while ignoring changes. This is useful when we
 - Riverpod best practice checklist:
   - Using ref.read should be avoided as much as possible.
   - DON'T CALL READ INSIDE THE BODY OF A PROVIDER
+  - Use ref.listen for navigation after setting

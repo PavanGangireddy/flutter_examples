@@ -19,6 +19,7 @@ class RecipeListNotifier extends StateNotifier<RecipeListState> {
     String query,
   ) async {
     try {
+      state = RecipeListState.loading();
       final recipeJson = await _recipeService.getRecipes(query, 5, 10);
       final recipeList =
           recipeJson.hits.map(((recipe) => recipe.recipe)).toList();

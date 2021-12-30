@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_pilot/notifiers/counter.dart';
 import 'package:flutter_app_pilot/notifiers/location.dart';
+import 'package:flutter_app_pilot/core/route_path_constants.dart';
 
 final provider = StateNotifierProvider<CounterNotifier, CounterModel>(
     (ref) => CounterNotifier());
@@ -37,7 +38,7 @@ class Locations extends HookConsumerWidget {
               Text("Counter: $counter"),
               GestureDetector(
                 onTap: () => _onButtonPressed(ref),
-                child: Text("Increment"),
+                child: const Text("Increment"),
               )
             ]));
   }
@@ -47,6 +48,7 @@ class Locations extends HookConsumerWidget {
   }
 
   _onLocationTap(BuildContext context, int id) {
-    Navigator.pushNamed(context, "/location-detail", arguments: {"id": id});
+    Navigator.pushNamed(context, RoutePathConstants.locationDetailRoute,
+        arguments: {"id": id});
   }
 }

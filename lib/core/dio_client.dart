@@ -3,6 +3,14 @@ import 'package:flutter_app_pilot/core/interceptors/auth_interceptor.dart';
 import 'package:flutter_app_pilot/core/interceptors/refresh_token_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+// TODO: Add cancel request support
+/*
+
+    Cancel the page request if the UI no-longer needs it before the request
+    is finished.
+    This typically happen if the user scrolls very fast
+*/
+
 class CustomDioClient {
   Dio _dio = Dio();
 
