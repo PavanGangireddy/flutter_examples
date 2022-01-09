@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_pilot/domain/entities/cart_item.dart';
-import 'package:flutter_app_pilot/notifiers/cart_providers.dart';
+import 'package:flutter_app_pilot/food_app/presentation/providers/cart_providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FoodAppCartRoute extends StatelessWidget {

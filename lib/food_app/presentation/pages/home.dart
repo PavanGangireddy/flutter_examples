@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter_app_pilot/widgets/popular_foods_list.dart';
+import 'package:flutter_app_pilot/food_app/presentation/widgets/popular_foods_list.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../domain/entities/dishes.dart';
-import '../widgets/cards.dart';
-import '../constants.dart' as constants;
+import './constants.dart' as constants;
 
 class FoodApp extends StatelessWidget {
   @override
@@ -35,13 +33,6 @@ class FoodApp extends StatelessWidget {
                   child: _SearchBar(),
                 ),
                 SizedBox(height: 20.0),
-                SlideInRight(
-                  duration: Duration(milliseconds: 800),
-                  child: _HorizontalList(
-                    items: Dishes.types,
-                    itemBuilder: (context, int i) => TypeCard(index: i),
-                  ),
-                ),
                 SlideInLeft(
                   duration: Duration(milliseconds: 900),
                   child: _PopularFoodsTitle(),

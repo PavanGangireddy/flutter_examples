@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_app_pilot/core/route_path_constants.dart';
-import 'package:flutter_app_pilot/notifiers/cart_providers.dart';
+import 'package:flutter_app_pilot/food_app/presentation/providers/cart_providers.dart';
 import 'package:flutter_app_pilot/notifiers/request_state.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../domain/entities/dishes.dart';
-import '../constants.dart' as constants;
+import './constants.dart' as constants;
 
 class FoodAppDishDetailRoute extends StatelessWidget {
   const FoodAppDishDetailRoute({Key? key, required this.index})
@@ -44,10 +42,7 @@ class _ScrollView extends StatelessWidget {
           delegate: SliverChildListDelegate([
             _Header(index: index),
             SizedBox(height: 10.0),
-            FadeInUp(child: _Headline(index: index)),
             SizedBox(height: 10.0),
-            Divider(),
-            _DishStats(index: index),
             Divider(),
             _DishDescription(),
             _AddToCartSwitch(index: index),
@@ -114,44 +109,6 @@ class _DishDescription extends StatelessWidget {
   }
 }
 
-class _DishStats extends StatelessWidget {
-  const _DishStats({Key? key, required this.index}) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    final List<_DishStat> list = [
-      _DishStat(
-        FontAwesomeIcons.solidStar,
-        Dishes.dishes[index].rating.toString(),
-      ),
-      _DishStat(
-        FontAwesomeIcons.solidClock,
-        Dishes.dishes[index].deliveryTime.toString() + ' min',
-      ),
-      _DishStat(
-        FontAwesomeIcons.locationArrow,
-        Dishes.dishes[index].distance.toString() + ' km',
-      ),
-    ];
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          for (int i = 0; i < list.length; i++)
-            FadeInLeft(
-              duration: Duration(milliseconds: (i + 1) * 700),
-              child: _DishStatItem(dish: list[i]),
-            ),
-        ],
-      ),
-    );
-  }
-}
-
 class _DishStat {
   final IconData icon;
   final String title;
@@ -172,63 +129,6 @@ class _DishStatItem extends StatelessWidget {
         SizedBox(width: 5.0),
         Text(dish.title),
       ],
-    );
-  }
-}
-
-class _Headline extends StatelessWidget {
-  const _Headline({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                Dishes.dishes[index].name,
-                style: Theme.of(context).textTheme.headline5,
-                overflow: TextOverflow.ellipsis,
-              ),
-              SizedBox(height: 5.0),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.6,
-                child: Row(
-                  children: [
-                    Icon(Icons.location_on, color: constants.kPrimaryColor),
-                    SizedBox(width: 5.0),
-                    Expanded(
-                      child: Text(
-                        Dishes.dishes[index].place,
-                        overflow: TextOverflow.fade,
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Text(
-            '\$' + Dishes.dishes[index].price.toStringAsFixed(0),
-            overflow: TextOverflow.fade,
-            style: Theme.of(context)
-                .textTheme
-                .headline4!
-                .copyWith(color: constants.kPrimaryColor),
-          ),
-        ],
-      ),
     );
   }
 }

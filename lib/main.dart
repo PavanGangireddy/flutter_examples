@@ -1,6 +1,6 @@
 import 'package:flutter_app_pilot/screens/HomeRoute/home_route.dart';
-import 'package:flutter_app_pilot/screens/food_app_cart.dart';
-import 'package:flutter_app_pilot/screens/home.dart';
+import 'package:flutter_app_pilot/food_app/presentation/pages/food_app_cart.dart';
+import 'package:flutter_app_pilot/food_app/presentation/pages/home.dart';
 import 'package:flutter_app_pilot/screens/stopwatch_timer.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_app_pilot/screens/todos_app.dart';
 import 'package:flutter_app_pilot/screens/recipes_app.dart';
 import 'screens/locations.dart';
 import 'screens/location_detail.dart';
-import 'package:flutter_app_pilot/screens/food_app_dish_detail.dart';
+import 'package:flutter_app_pilot/food_app/presentation/pages/food_app_dish_detail.dart';
 
 import './core/route_path_constants.dart';
 

@@ -8,7 +8,7 @@
 
 // */
 
-// class AppExceptionInterceptor extends Interceptor {
+// class CommonExceptionsInterceptor extends Interceptor {
 //   @override
 //   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
 //     print('REQUEST[${options.method}] => PATH: ${options.path}');
@@ -47,7 +47,7 @@
 //         throw UnauthorisedException(response.data.toString());
 //       case 500:
 //       default:
-//         throw FetchDataException(
+//         throw ServerException(
 //           'Error occurred while Communication with Server with StatusCode : ${response.statusCode}',
 //         );
 //     }

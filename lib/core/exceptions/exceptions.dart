@@ -8,11 +8,6 @@ class InvalidRequestException extends AppException {
   InvalidRequestException([message]) : super(message, 'Invalid Request: ');
 }
 
-class InvalidInputException extends AppException {
-  InvalidInputException([message]) : super(message, 'Invalid Input: ');
-}
-
-class FetchDataException extends AppException {
-  FetchDataException([message])
-      : super(message, 'Error During Communication: ');
+class ServerException extends AppException {
+  ServerException([message]) : super(message, 'Server exception: ');
 }

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_app_pilot/core/exceptions/network_exceptions.dart';
 import 'package:flutter_app_pilot/core/local_storage.dart';
 
 /*

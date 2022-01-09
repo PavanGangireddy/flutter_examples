@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_pilot/notifiers/dish_providers.dart';
-import 'package:flutter_app_pilot/screens/food_app.dart';
+import 'package:flutter_app_pilot/food_app/presentation/view_models/dish/dishes_view_model.dart';
 import 'package:flutter_app_pilot/widgets/cards.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -9,9 +8,18 @@ class PopularFoodsList extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final dishList = ref.watch(dishListProvider);
+    final dishList =
+        ref.watch(dishesViewModelProvider.select((state) => state.dishes));
 
-    return dishList.when(
+    return dishList.maybeWhen(
+        orElse: () => Container(
+              color: Colors.white,
+              child: const Center(child: CircularProgressIndicator()),
+            ),
+        initial: () => Container(
+              color: Colors.white,
+              child: const Center(child: CircularProgressIndicator()),
+            ),
         loading: () => Container(
               color: Colors.white,
               child: const Center(child: CircularProgressIndicator()),
@@ -30,7 +38,7 @@ class PopularFoodsList extends HookConsumerWidget {
                         DishCard(index: i)
                       ],
                     ])),
-        error: (err, stack) {
+        error: (err) {
           return Center(
             child: Text('$err.toString()'),
           );
