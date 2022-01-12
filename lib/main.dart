@@ -1,6 +1,8 @@
+import 'package:flutter_app_pilot/food_app/presentation/guards/check_if_onboarding_ackd.dart';
+import 'package:flutter_app_pilot/food_app/presentation/pages/home.dart';
+import 'package:flutter_app_pilot/food_app/routes/router.gr.dart';
 import 'package:flutter_app_pilot/screens/HomeRoute/home_route.dart';
 import 'package:flutter_app_pilot/food_app/presentation/pages/food_app_cart.dart';
-import 'package:flutter_app_pilot/food_app/presentation/pages/home.dart';
 import 'package:flutter_app_pilot/screens/stopwatch_timer.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -9,26 +11,29 @@ import 'package:flutter_app_pilot/screens/recipes_app.dart';
 import 'screens/locations.dart';
 import 'screens/location_detail.dart';
 import 'package:flutter_app_pilot/food_app/presentation/pages/food_app_dish_detail.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import './core/route_path_constants.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends HookConsumerWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  final _appRouter = AppRouter();
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: _routes(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: RoutePathConstants.homeRoute,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 
@@ -55,9 +60,9 @@ class MyApp extends StatelessWidget {
         case RoutePathConstants.homeRoute:
           screen = const HomeRoute();
           break;
-        case RoutePathConstants.foodAppRoute:
-          screen = FoodApp();
-          break;
+        // case RoutePathConstants.foodAppRoute:
+        //   screen = FoodAppHome();
+        //   break;
         case RoutePathConstants.foodAppDishDetailRoute:
           screen = FoodAppDishDetailRoute(index: routeArgs['id']);
           break;

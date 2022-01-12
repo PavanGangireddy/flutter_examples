@@ -12,7 +12,7 @@ void main() {
         overrides: [
           recipeServiceProvider.overrideWithValue(FakeRecipeServiceImpl())
         ],
-        child: const MyApp(),
+        child: MyApp(),
       ),
     );
 

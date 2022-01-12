@@ -9,7 +9,7 @@ class DishesState with _$DishesState {
   const factory DishesState({required RemoteDataState<List<Dish>> dishes}) =
       _DishesState;
 
-  factory DishesState.initial() => const DishesState(
+  factory DishesState.initial() => DishesState(
         dishes: RemoteDataState.initial(),
       );
 }

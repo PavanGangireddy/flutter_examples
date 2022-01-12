@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import './constants.dart' as constants;
 
-class FoodApp extends StatelessWidget {
+class FoodAppHome extends StatelessWidget {
   @override
   Widget build(
     BuildContext context,

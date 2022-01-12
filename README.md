@@ -72,17 +72,24 @@
   - https://leerob.io/blog/react-state-management#thats-all-folks
   - HERE NOW......
 
-- UI Challenges
+- More riverpod
 
-  - Forms and Form validations
-  - Tabs UI Challenge
-    - https://medium.com/flutter/getting-to-the-bottom-of-navigation-in-flutter-b3e440b9386
+  - ref.refresh?
+  - Prepare a diagram of this sort mentioned in the article - https://medium.com/sparc-agency/flutter-using-riverpod-for-state-management-3c9ffbf55f78
 
 - More Navigation
 
-  - Protected route
+  - Protected route using Auto Route
     - Student/Admin Logins
     - Anonymous Login
+
+- UI Challenges
+
+  - Forms and Form validations
+  - Persisting Scroll in screen
+  - Tabs UI Challenge
+    - https://medium.com/flutter/getting-to-the-bottom-of-navigation-in-flutter-b3e440b9386
+  - Infinite list scroll
 
 - More Networking & More Navigation
 
@@ -156,6 +163,7 @@
   - https://github.com/abuanwar072?tab=repositories
   - Forms
     - https://www.youtube.com/watch?v=nKv7Rz21vHo
+- Notifications and deeplinking
 
 ### Apps Built
 
@@ -187,3 +195,4 @@
 ## General resources
 
 - https://medium.com/flutter-community/15-useful-libraries-for-flutter-development-productivity-updated-2021-15bcafe205f3
+- `flutter packages pub run build_runner watch`
