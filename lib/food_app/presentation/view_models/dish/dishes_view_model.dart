@@ -20,8 +20,11 @@ class DishesViewModel extends StateNotifier<DishesState> {
   getPopularDishes() async {
     state = state.copyWith(dishes: const RemoteDataState.loading());
     final dishesList = await _getPopularDishesInteractor(NoParams());
-    dishesList.fold((l) {
-      state = state.copyWith(dishes: const RemoteDataState.error('Error!'));
-    }, (r) => {state = state.copyWith(dishes: RemoteDataState.data(r))});
+    dishesList.when(
+      success: () => {
+        state = state.copyWith(dishes: const RemoteDataState.error('Error!'));
+      }, failure: () => {
+      state = state.copyWith(dishes: RemoteDataState.data(r))
+      });
   }
 }

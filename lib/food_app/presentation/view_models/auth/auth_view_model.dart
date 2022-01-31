@@ -5,26 +5,28 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final authViewModelProvider =
     StateNotifierProvider<AuthViewModel, AuthState>((ref) {
-  return AuthViewModel(ref.read);
+  final authViewModel = AuthViewModel(ref.read);
+
+  return authViewModel;
 });
 
 class AuthViewModel extends StateNotifier<AuthState> {
-  AuthViewModel(this._read) : super(AuthState.initial()) {
+  AuthViewModel(this._read) : super(const AuthState.initial()) {
     init();
   }
   final _read;
 
   setAuthenticated() async {
     await _read(localStorageProvider).saveAccessToken("random");
-    state = AuthState.authenticated();
+    state = const AuthState.authenticated();
   }
 
   init() async {
     final accessToken = await _read(localStorageProvider).getAccessToken();
     if (accessToken != null) {
-      state = AuthState.authenticated();
+      state = const AuthState.authenticated();
     } else {
-      state = AuthState.unauthenticated();
+      state = const AuthState.unauthenticated();
     }
   }
 }

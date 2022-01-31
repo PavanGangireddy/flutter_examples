@@ -7,5 +7,5 @@ part 'data_state.freezed.dart';
 @freezed
 class DataState<T> with _$DataState {
   const factory DataState.success(T data) = _DataStateSuccess<T>;
-  const factory DataState.error(DioError error) = _DataStateError<T>;
+  const factory DataState.failed(DioError error) = _DataStateFailed<T>;
 }

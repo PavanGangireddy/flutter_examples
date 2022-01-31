@@ -35,7 +35,7 @@ class CartItemsNotifier extends StateNotifier<AsyncValue<List<CartItem>>> {
       newList = [
         for (final cartItem in value)
           if (cartItem.itemId == itemId)
-            cartItem.copyWith(quantity: cartItem.quantity! + 1)
+            cartItem.copyWith(quantity: cartItem.quantity + 1)
           else
             cartItem
       ];
@@ -52,7 +52,7 @@ class CartItemsNotifier extends StateNotifier<AsyncValue<List<CartItem>>> {
 
   Future<void> getCartItems() async {
     try {
-      state = AsyncValue.loading();
+      state = const AsyncValue.loading();
       final cartItems = await _cartService.getCartItems();
       state = AsyncValue.data(cartItems);
     } catch (e) {

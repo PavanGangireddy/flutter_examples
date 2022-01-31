@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_app_pilot/core/error/failures.dart';
+import 'package:flutter_app_pilot/core/resources/data_state.dart';
 import 'package:flutter_app_pilot/food_app/data/services/DishService/interface.dart';
 import 'package:flutter_app_pilot/food_app/domain/entities/dish.dart';
 import 'package:flutter_app_pilot/food_app/domain/repositories/dishes_repository.dart';
@@ -14,13 +15,8 @@ class DishesRepositoryImpl implements IDishesRepository {
   );
 
   @override
-  Future<Either<Failure, List<Dish>>> getPopularDishesList() async {
-    try {
-      final result = await _dishService.getPopularDishesList();
-      return Right(result);
-    } catch (error) {
-      return Left(UnexpectedFailure(error as DioError));
-    }
+  Future<List<Dish>> getPopularDishesList() async {
+    return _dishService.getPopularDishesList();
   }
 }
 

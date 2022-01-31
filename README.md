@@ -13,6 +13,7 @@
   - TODO: More Widgets
 - Flutter hooks
   - TODO: Add links
+  - why is the implementation of useEffect different from React hooks useEffect? - https://github.com/rrousselGit/flutter_hooks/issues/63
 - Riverpod Basics - Add link here
 
 - Vscode setup
@@ -137,6 +138,7 @@
   - I18n setup
   - core inside FolderStructure
 - Custom hooks
+  - https://resocoder.com/2020/01/21/flutter-hooks-hide-fab-animation-100-widget-code-reuse/
 - Animations
 - Platform specific code
   - Ios vs android vs web
